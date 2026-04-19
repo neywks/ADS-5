@@ -24,11 +24,13 @@ std::string infx2pstfx(const std::string& inf) {
     if (std::isdigit(ch)) {
       res += ch;
     } else if (ch == '(') {
+      stack.push(ch);
+    } else if (ch == ')') {
       while (!stack.isEmpty() && stack.get() != '(') {
         res += stack.pop();
       }
       if (!stack.isEmpty()) {
-        stack.pop(ch);
+        stack.pop();
       }
     } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
       while (true) {

@@ -25,7 +25,8 @@ std::string infx2pstfx(const std::string& inf) {
             }
             sta += tkn;
         } else if (tkn == '+' || tkn == '-' || tkn == '*' || tkn == '/') {
-            while (!st.empty() && st.top() != '(' && Oper(st.top()) >= Oper(tkn)) {
+            while (!st.empty() && st.top() != '(' &&
+                   Oper(st.top()) >= Oper(tkn)) {
                 if (!sta.empty() && sta.back() != ' ') {
                     sta += ' ';
                 }
@@ -33,11 +34,9 @@ std::string infx2pstfx(const std::string& inf) {
                 st.pop();
             }
             st.push(tkn);
-        } 
-        else if (tkn == '(') {
+        } else if (tkn == '(') {
             st.push(tkn);
-        } 
-        else if (tkn == ')') {
+        } else if (tkn == ')') {
             bool foundOpeningBracket = false;
             while (!st.empty()) {
                 char topOp = st.top();
@@ -79,15 +78,18 @@ int eval(const std::string& post) {
 
     while (iss >> tkn) {
         if (std::isdigit(tkn[0]) ||
-            (tkn[0] == '-' && tkn.length() > 1 && std::isdigit(tkn[1]))) {
+            (tkn[0] == '-' && tkn.length() > 1 &&
+             std::isdigit(tkn[1]))) {
             values.push(std::stoi(tkn));
         } else {
             if (values.size() < 2) {
                 throw std::runtime_error(
                     "Invalid expression: insufficient operands");
             }
-            int right = values.top(); values.pop();
-            int left = values.top(); values.pop();
+            int right = values.top();
+            values.pop();
+            int left = values.top();
+            values.pop();
 
             switch (tkn[0]) {
                 case '+':

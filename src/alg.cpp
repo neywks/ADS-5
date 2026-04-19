@@ -1,4 +1,5 @@
 // Copyright 2025 NNTU-CS
+
 #include <string>
 #include <stack>
 #include <cctype>
@@ -23,10 +24,8 @@ std::string infx2pstfx(const std::string& inf) {
                 sta += ' ';
             }
             sta += tkn;
-        } else if (tkn == '+' || tkn == '-' ||
-                   tkn == '*' || tkn == '/') {
-            while (!st.empty() && st.top() != '(' &&
-                   Oper(st.top()) >= Oper(tkn)) {
+        } else if (tkn == '+' || tkn == '-' || tkn == '*' || tkn == '/') {
+            while (!st.empty() && st.top() != '(' && Oper(st.top()) >= Oper(tkn)) {
                 if (!sta.empty() && sta.back() != ' ') {
                     sta += ' ';
                 }
@@ -80,8 +79,7 @@ int eval(const std::string& post) {
 
     while (iss >> tkn) {
         if (std::isdigit(tkn[0]) ||
-            (tkn[0] == '-' && tkn.length() > 1 &&
-             std::isdigit(tkn[1]))) {
+            (tkn[0] == '-' && tkn.length() > 1 && std::isdigit(tkn[1]))) {
             values.push(std::stoi(tkn));
         } else {
             if (values.size() < 2) {

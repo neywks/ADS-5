@@ -5,7 +5,7 @@
 #include <sstream>
 #include <stdexcept>
 
-nt Oper(char op) {
+int Oper(char op) {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;

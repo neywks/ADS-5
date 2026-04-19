@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include "tstack.h"
+#incluse <cctype>
 
 int getPrior(char pr) {
   switch (pr) {

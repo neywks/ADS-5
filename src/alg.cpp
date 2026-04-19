@@ -114,7 +114,7 @@ int eval(const std::string& post) {
     }
 
     if (values.size() != 1) {
-        throw std::runtime_error("InvExpression");
+        throw std::runtime_error("Invalid expression");
     }
     return values.top();
 }

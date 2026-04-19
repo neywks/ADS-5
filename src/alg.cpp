@@ -2,7 +2,6 @@
 #include <string>
 #include <map>
 #include "tstack.h"
-#include <cctype>
 
 int getPrior(char pr) {
   switch (pr) {
@@ -74,5 +73,5 @@ int eval(const std::string& pref) {
       stack.push(res);
     }
   }
-  return stuck.pop();
+  return stack.pop();
 }

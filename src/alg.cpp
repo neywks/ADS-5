@@ -1,6 +1,7 @@
 // Copyright 2025 NNTU-CS
 #include <string>
 #include <map>
+#include <cctype>
 #include "tstack.h"
 
 int getPrior(char pr) {
@@ -23,23 +24,22 @@ std::string infx2pstfx(const std::string& inf) {
   for (char ch : inf) {
     if (std::isdigit(ch)) {
       res += ch;
-    } else if (ch == '(') {
+    } 
+    else if (ch == '(') {
       stack.push(ch);
-    } else if (ch == ')') {
+    } 
+    else if (ch == ')') {
       while (!stack.isEmpty() && stack.get() != '(') {
         res += stack.pop();
       }
       if (!stack.isEmpty()) {
         stack.pop();
       }
-    } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
-      while (true) {
-        if (stack.isEmpty()) break;
-        if (stack.get() == '(') break;
-        if (getPrior(stack.get()) < getPrior(ch)) break;
-
+    } 
+    else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+      while (!stack.isEmpty() && stack.get() != '(' && getPrior(stack.get()) >= getPrior(ch)) {
         res += stack.pop();
-        }
+      }
       stack.push(ch);
       }
     }

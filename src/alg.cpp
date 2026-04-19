@@ -28,12 +28,12 @@ std::string infx2pstfx(const std::string& inf) {
         res += stack.pop();
       }
       if (!stack.isEmpty()) {
-        stack.pop();
+        stack.pop(ch);
       }
     } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
       while (true) {
         if (stack.isEmpty()) break;
-        if (stake.get() == '(') break;
+        if (stack.get() == '(') break;
         if (getPrior(stack.get()) < getPrior(ch)) break;
 
         res += stack.pop();

@@ -27,7 +27,9 @@ std::string infx2pstfx(const std::string& inf) {
       while (!stack.isEmpty() && stack.get() != '(') {
         res += stack.pop();
       }
-      stack.pop();
+      if (!stack.isEmpty()) {
+        stack.pop();
+      }
     } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
       while (true) {
         if (stack.isEmpty()) break;

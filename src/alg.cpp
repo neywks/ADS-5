@@ -1,6 +1,7 @@
 // Copyright 2025 NNTU-CS
 #include <string>
 #include <map>
+#include <cctype>
 #include "tstack.h"
 
 int getPrior(char pr) {
@@ -63,13 +64,13 @@ int eval(const std::string& pref) {
       if (ch == '+') {
         res = le + ri;
       }
-      if (ch == '-') {
+      else if (ch == '-') {
         res = le - ri;
       }
-      if (ch == '*') {
+      else if (ch == '*') {
         res = le*ri;
       }
-      if (ch == '/') {
+      else if (ch == '/') {
         res = le/ri;
       }
       stack.push(res);
